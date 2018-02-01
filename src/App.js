@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import BusinessList from './components/BusinessList/BusinessList';
 import SearchBar from './components/SearchBar/SearchBar';
-import Yelp from './util/Yelp.js';
+import {Yelp} from './util/Yelp.js';
 
 /*const business = {
   imageSrc: 'https://s3.amazonaws.com/codecademy-content/programs/react/ravenous/pizza.jpg',
@@ -40,7 +40,7 @@ class App extends Component {
   }
 
   searchYelp(term, location, sortBy){
-    Yelp.search(term, location, sortBy).then(business => this.setState({business: business}))
+    Yelp.search(term, location, sortBy).then(response => this.setState({businesses: response}));
   }
 
   render() {
@@ -48,7 +48,7 @@ class App extends Component {
       <div className="App">
         <h1>ravenous bunny</h1>
         <SearchBar searchYelp={this.searchYelp} />
-        <BusinessList businesses={businesses} />
+        <BusinessList businesses={this.state.businesses} />
       </div>
 
 
